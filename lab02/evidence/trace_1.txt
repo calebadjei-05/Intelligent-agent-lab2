@@ -1,0 +1,10 @@
+Question: I have GHS 1,200. I want 4 bags of rice at GHS 185 each and 3 gallons of oil at GHS 95 each. How much will I have left?
+Observation: The model gave no usable reply. Reply with Thought, Action and Action Input.
+Thought: Calculate total cost of 4 bags of rice at GHS 185 each and 3 gallons of oil at GHS 95 each, then subtract from GHS 1,200 to find remaining amount.  
+Action: calculator  
+Action Input: 4*185 + 3*95
+Observation: 1025
+Thought: Subtract the total cost (GHS 1,025) from the initial amount (GHS 1,200) to find the remaining balance.  
+Action: finish  
+Action Input: GHS 175
+FINAL ANSWER: GHS 175

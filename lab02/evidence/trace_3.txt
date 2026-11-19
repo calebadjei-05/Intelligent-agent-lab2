@@ -1,0 +1,15 @@
+Question: Look up Makola Market on Wikipedia, then work out the cost of 12 bags of rice at GHS 185 each.
+Observation: The model gave no usable reply. Reply with Thought, Action and Action Input.
+Thought: Need to retrieve a short summary of Makola Market from Wikipedia.  
+Action: wiki_lookup  
+Action Input: Makola Market
+Observation: Makola Market is a market place and shopping district in the center of the city of Accra, the capital of Ghana. A wide array of products is sold in the markets and its surrounding streets, from car parts to land snails. Dominated by women traders, the market sells fresh produce, manufactured and imported foods, clothes, shoes, tools, medicines, and pots and pans. Jewellery made from locally handcrafted beads can also be found for sale in the market. About 25% of the 70% market women are employed in Makola Market. All type of school materials such as uniforms, pens books and stationery can also be bought there.
+Observation: The model gave no usable reply. Reply with Thought, Action and Action Input.
+Thought: Calculate 12 * 185 to find total cost.  
+Action: calculator  
+Action Input: 12 * 185
+Observation: 2220
+Thought: The total cost is 12 × 185 = 2220 GHS.  
+Action: finish  
+Action Input: 2220 GHS
+FINAL ANSWER: 2220 GHS

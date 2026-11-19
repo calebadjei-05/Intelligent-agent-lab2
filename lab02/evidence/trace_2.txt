@@ -1,0 +1,10 @@
+Question: What is the capital of the Bono East Region? Also, what is 15 * 240?
+Observation: The model gave no usable reply. Reply with Thought, Action and Action Input.
+Thought: I need to find the capital of the Bono East Region.  
+Action: wiki_lookup  
+Action Input: Bono East Region
+Observation: The Bono East region of Ghana is a new region carved out of the Brong Ahafo region. The capital of the new region is Techiman. This creation of this new region was in fulfillment of a promise made by the New Patriotic Party prior to the 2016 Ghana general election. Upon winning the elections, the President, Nana Akuffo Addo created the Ministry of Regional Reorganization to oversee policy formulation and implementation. In all six new regions are to be created from the existing ten regions of Ghana. The other regions are Ahafo, Western North, Savannah, North East, and Oti regions.
+Thought: The capital of the Bono East Region is Techiman. The product of 15 and 240 is 3600.  
+Action: finish  
+Action Input: The capital of the Bono East Region is Techiman. 15 × 240 = 3600.
+FINAL ANSWER: The capital of the Bono East Region is Techiman. 15 × 240 = 3600.
