@@ -10,16 +10,24 @@ import json
 import os
 import re
 import sys
+# Use LiteLLM's built-in model price list instead of downloading it (avoids a timeout warning)
+os.environ.setdefault("LITELLM_LOCAL_MODEL_COST_MAP", "True")
 import litellm
 from dotenv import load_dotenv
 from litellm import acompletion
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
+# Load .env from the repository root, whichever folder you run from
+load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".env"))
 load_dotenv()
 litellm.drop_params = True
-MODEL = os.getenv("LLM_MODEL")
-params = StdioServerParameters(command=sys.executable, args=["server.py"])
+MODEL = os.getenv("LLM_MODEL") or "groq/openai/gpt-oss-20b"
+if not (os.getenv("GROQ_API_KEY") or os.getenv("GEMINI_API_KEY")):
+    sys.exit("No API key found. Put GROQ_API_KEY=... in the .env file in the repository root "
+             "(next to README.md), then run again.")
+HERE = os.path.dirname(os.path.abspath(__file__))   # the lab03 folder, so any working folder works
+params = StdioServerParameters(command=sys.executable, args=[os.path.join(HERE, "server.py")])
 
 # --- Parser (same as Lab 2) ---
 ACTION_RE = re.compile(r"Action:\s*(\w+)\s*\nAction Input:\s*(.*)", re.DOTALL)
@@ -92,6 +100,8 @@ async def run_agent(session, tools, question, max_steps=6):
                 obs = "\n".join(c.text for c in result.content if hasattr(c, "text")) or "[]"
             except json.JSONDecodeError:
                 obs = 'Action Input must be a JSON object, e.g. {"item": "amoxicillin"}.'
+            except Exception as e:
+                obs = f"Tool error: {e}"
         else:
             obs = f"Unknown action '{action}'. Use {', '.join(tool_names)} or finish."
         trace.append("Observation: " + str(obs))
@@ -109,8 +119,8 @@ async def main():
             answer, trace = await run_agent(session, tools, question)
     print("\n".join(trace))
     print("FINAL ANSWER:", answer)
-    os.makedirs("evidence", exist_ok=True)
-    with open("evidence/react_via_mcp.txt", "w", encoding="utf-8") as f:
+    os.makedirs(os.path.join(HERE, "evidence"), exist_ok=True)
+    with open(os.path.join(HERE, "evidence", "react_via_mcp.txt"), "w", encoding="utf-8") as f:
         f.write("\n".join(trace) + "\nFINAL ANSWER: " + answer + "\n")
 
 
