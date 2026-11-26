@@ -1,0 +1,17 @@
+Question: Do we have amoxicillin 500mg?
+Observation: The model gave no usable reply. Reply with Thought, Action and Action Input.
+Thought: The user wants to know if we have amoxicillin 500mg in stock.  
+Action: check_stock  
+Action Input: {"item":"amoxicillin","strength":"500mg"}
+Observation: {
+  "item": "Amoxicillin",
+  "strength": "500mg",
+  "form": "capsules (pack of 21)",
+  "quantity": "40",
+  "unit_price_ghs": "35.00",
+  "expiry_date": "2027-12-31"
+}
+Thought: Stock found for Amoxicillin 500mg capsules, quantity 40.  
+Action: finish  
+Action Input: {"message":"Yes, we have Amoxicillin 500mg capsules (pack of 21) in stock. Quantity available: 40 units. Expiry date: 2027-12-31."}
+FINAL ANSWER: {"message":"Yes, we have Amoxicillin 500mg capsules (pack of 21) in stock. Quantity available: 40 units. Expiry date: 2027-12-31."}
