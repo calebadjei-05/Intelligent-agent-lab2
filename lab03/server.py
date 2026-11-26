@@ -5,20 +5,20 @@ from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("pharmacy-stock")
 
-# Data path from the manual. Run commands from inside lab03/ so it resolves.
-DATA = "data/pharmacy_stock.csv"
+HERE = os.path.dirname(os.path.abspath(__file__))   # the lab03 folder, so any working folder works
+DATA = os.path.join(HERE, "data", "pharmacy_stock.csv")
 FIELDS = ["item", "strength", "form", "quantity", "unit_price_ghs", "expiry_date"]
 
 
 def load():
-    with open(DATA, newline="") as f:
+    with open(DATA, newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
 
 
 def save(rows):
     # Write to a temporary file first, then replace, so a crash cannot leave half a CSV
     tmp = DATA + ".tmp"
-    with open(tmp, "w", newline="") as f:
+    with open(tmp, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=FIELDS)
         writer.writeheader()
         writer.writerows(rows)
